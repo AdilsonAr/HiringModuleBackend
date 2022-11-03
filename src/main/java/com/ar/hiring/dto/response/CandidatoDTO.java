@@ -1,19 +1,10 @@
-package com.ar.hiring.model;
+package com.ar.hiring.dto.response;
 
 import java.time.LocalDate;
-import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import com.ar.hiring.model.Candidato;
 
-@Entity
-public class Candidato {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CandidatoDTO {
 	private long idCandidato;
 	private String nombre;
 	private String dui;
@@ -25,14 +16,16 @@ public class Candidato {
 	private String correo;
 	private String habilidades;
 	private int calificacionPsicologica;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "candidato")
-	private List<Aplicacion> aplicaciones;
 	
-	public Candidato(long id, String nombre, String dui, String nit, LocalDate fechaNacimiento, String licenciaConducir,
-			String estadoCivil, String telefono, String correo, String habilidades, int calificacionPsicologica,
-			List<Aplicacion> aplicaciones) {
+	public CandidatoDTO() {
 		super();
-		this.idCandidato = id;
+	}
+
+	public CandidatoDTO(long idCandidato, String nombre, String dui, String nit, LocalDate fechaNacimiento,
+			String licenciaConducir, String estadoCivil, String telefono, String correo, String habilidades,
+			int calificacionPsicologica) {
+		super();
+		this.idCandidato = idCandidato;
 		this.nombre = nombre;
 		this.dui = dui;
 		this.nit = nit;
@@ -43,82 +36,100 @@ public class Candidato {
 		this.correo = correo;
 		this.habilidades = habilidades;
 		this.calificacionPsicologica = calificacionPsicologica;
-		this.aplicaciones = aplicaciones;
 	}
-	public Candidato() {
-		super();
+
+	public static CandidatoDTO toDTO(Candidato c) {
+		CandidatoDTO dto = new CandidatoDTO(c.getId(),c.getNombre(),c.getDui(),c.getNit(),c.getFechaNacimiento()
+				,c.getLicenciaConducir(),c.getEstadoCivil(),c.getTelefono(),c.getCorreo(),c.getHabilidades(),c.getCalificacionPsicologica());
+		return dto;
 	}
-	public long getId() {
+
+	public long getIdCandidato() {
 		return idCandidato;
 	}
-	public void setId(long id) {
-		this.idCandidato = id;
+
+	public void setIdCandidato(long idCandidato) {
+		this.idCandidato = idCandidato;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getDui() {
 		return dui;
 	}
+
 	public void setDui(String dui) {
 		this.dui = dui;
 	}
+
 	public String getNit() {
 		return nit;
 	}
+
 	public void setNit(String nit) {
 		this.nit = nit;
 	}
+
 	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
+
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
+
 	public String getLicenciaConducir() {
 		return licenciaConducir;
 	}
+
 	public void setLicenciaConducir(String licenciaConducir) {
 		this.licenciaConducir = licenciaConducir;
 	}
+
 	public String getEstadoCivil() {
 		return estadoCivil;
 	}
+
 	public void setEstadoCivil(String estadoCivil) {
 		this.estadoCivil = estadoCivil;
 	}
+
 	public String getTelefono() {
 		return telefono;
 	}
+
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+
 	public String getCorreo() {
 		return correo;
 	}
+
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
+
 	public String getHabilidades() {
 		return habilidades;
 	}
+
 	public void setHabilidades(String habilidades) {
 		this.habilidades = habilidades;
 	}
+
 	public int getCalificacionPsicologica() {
 		return calificacionPsicologica;
 	}
+
 	public void setCalificacionPsicologica(int calificacionPsicologica) {
 		this.calificacionPsicologica = calificacionPsicologica;
-	}
-	public List<Aplicacion> getAplicaciones() {
-		return aplicaciones;
-	}
-	public void setAplicaciones(List<Aplicacion> aplicaciones) {
-		this.aplicaciones = aplicaciones;
 	}
 	
 }
