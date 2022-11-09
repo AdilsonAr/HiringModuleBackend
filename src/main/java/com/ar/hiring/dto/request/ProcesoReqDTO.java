@@ -1,7 +1,5 @@
 package com.ar.hiring.dto.request;
 
-import java.time.LocalDate;
-
 import com.ar.hiring.model.Proceso;
 
 public class ProcesoReqDTO {
@@ -10,23 +8,18 @@ public class ProcesoReqDTO {
 	private String titulo;
 	private String funciones;
 	private String requerimientos;
-	private String closed;
-	private LocalDate apertura;
 	
-	public ProcesoReqDTO(long idProceso, int duracionMeses, String titulo, String funciones, String requerimientos,
-			String closed, LocalDate apertura) {
+	public ProcesoReqDTO(long idProceso, int duracionMeses, String titulo, String funciones, String requerimientos) {
 		super();
 		this.idProceso = idProceso;
 		this.duracionMeses = duracionMeses;
 		this.titulo = titulo;
 		this.funciones = funciones;
 		this.requerimientos = requerimientos;
-		this.closed = closed;
-		this.apertura = apertura;
 	}
 	
 	public static Proceso toModel(ProcesoReqDTO p) {
-		Proceso model= new Proceso(p.getDuracionMeses(),p.getTitulo(),p.getFunciones(),p.getRequerimientos(),p.getClosed(),p.getApertura());
+		Proceso model= new Proceso(p.getDuracionMeses(),p.getTitulo(),p.getFunciones(),p.getRequerimientos());
 		return model;
 	}
 	public ProcesoReqDTO() {
@@ -61,18 +54,6 @@ public class ProcesoReqDTO {
 	}
 	public void setRequerimientos(String requerimientos) {
 		this.requerimientos = requerimientos;
-	}
-	public String getClosed() {
-		return closed;
-	}
-	public void setClosed(String closed) {
-		this.closed = closed;
-	}
-	public LocalDate getApertura() {
-		return apertura;
-	}
-	public void setApertura(LocalDate apertura) {
-		this.apertura = apertura;
 	}
 	
 }

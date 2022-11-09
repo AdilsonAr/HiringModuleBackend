@@ -45,8 +45,7 @@ public class Proceso {
 		this.candidatos = candidatos;
 	}
 	
-	public Proceso(int duracionMeses, String titulo, String funciones, String requerimientos,
-			String closed, LocalDate apertura) {
+	public Proceso(int duracionMeses, String titulo, String funciones, String requerimientos) {
 		super();
 		this.duracionMeses = duracionMeses;
 		this.titulo = titulo;

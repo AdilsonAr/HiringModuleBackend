@@ -2,6 +2,7 @@ package com.ar.hiring.dto.response;
 
 import java.time.LocalDate;
 
+import com.ar.hiring.model.Aplicacion;
 import com.ar.hiring.model.Candidato;
 
 public class CandidatoDTO {
@@ -16,6 +17,8 @@ public class CandidatoDTO {
 	private String correo;
 	private String habilidades;
 	private int calificacionPsicologica;
+	private String aceptada;
+	private long idAplicacion;
 	
 	public CandidatoDTO() {
 		super();
@@ -23,7 +26,7 @@ public class CandidatoDTO {
 
 	public CandidatoDTO(long idCandidato, String nombre, String dui, String nit, LocalDate fechaNacimiento,
 			String licenciaConducir, String estadoCivil, String telefono, String correo, String habilidades,
-			int calificacionPsicologica) {
+			int calificacionPsicologica, String aceptada, long idAplicacion) {
 		super();
 		this.idCandidato = idCandidato;
 		this.nombre = nombre;
@@ -36,12 +39,30 @@ public class CandidatoDTO {
 		this.correo = correo;
 		this.habilidades = habilidades;
 		this.calificacionPsicologica = calificacionPsicologica;
+		this.aceptada = aceptada;
+		this.idAplicacion = idAplicacion;
 	}
 
-	public static CandidatoDTO toDTO(Candidato c) {
+	public static CandidatoDTO toDTO(Candidato c, Aplicacion a) {
 		CandidatoDTO dto = new CandidatoDTO(c.getId(),c.getNombre(),c.getDui(),c.getNit(),c.getFechaNacimiento()
-				,c.getLicenciaConducir(),c.getEstadoCivil(),c.getTelefono(),c.getCorreo(),c.getHabilidades(),c.getCalificacionPsicologica());
+				,c.getLicenciaConducir(),c.getEstadoCivil(),c.getTelefono(),c.getCorreo(),c.getHabilidades(),c.getCalificacionPsicologica(),a.getAceptada(),a.getId());
 		return dto;
+	}
+
+	public String getAceptada() {
+		return aceptada;
+	}
+
+	public void setAceptada(String aceptada) {
+		this.aceptada = aceptada;
+	}
+
+	public long getIdAplicacion() {
+		return idAplicacion;
+	}
+
+	public void setIdAplicacion(long idAplicacion) {
+		this.idAplicacion = idAplicacion;
 	}
 
 	public long getIdCandidato() {

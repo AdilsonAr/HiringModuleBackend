@@ -101,7 +101,7 @@ public class ProcesosDTO {
 
 	public static ProcesosDTO toDTO(Proceso p) {
 		List<CandidatoDTO> candidatosDtos=new ArrayList<>();
-		p.getCandidatos().forEach(x->candidatosDtos.add(CandidatoDTO.toDTO(x.getCandidato())));
+		p.getCandidatos().forEach(x->candidatosDtos.add(CandidatoDTO.toDTO(x.getCandidato(),x)));
 		ProcesosDTO dto=new ProcesosDTO(p.getId(),p.getDuracionMeses(),p.getTitulo(),p.getFunciones(),p.getRequerimientos(),p.getClosed(),p.getApertura(),candidatosDtos);
 		return dto;
 	}
